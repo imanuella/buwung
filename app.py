@@ -67,7 +67,20 @@ def index():
 @app.route('/predict', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
-            
+        
+        # img=load_img(img_path,target_size=(224,224,3))
+        # img=img_to_array(img)
+        # img=img/255
+        # img=np.expand_dims(img,[0])
+        # answer=model.predict(img)
+        # y_class = answer.argmax(axis=-1)
+        # print(y_class)
+        # y = " ".join(str(x) for x in y_class)
+        # y = int(y)
+        # res = lab[y]
+        # print(res)
+        # return res
+        
         # Get the file from post request
         f = request.files['file']
 
@@ -95,7 +108,66 @@ def upload():
 #######################
 
 
+# def processed_img(img_path):
+#     img=load_img(img_path,target_size=(224,224,3))
+#     img=img_to_array(img)
+#     img=img/255
+#     img=np.expand_dims(img,[0])
+#     answer=model.predict(img)
+#     y_class = answer.argmax(axis=-1)
+#     print(y_class)
+#     y = " ".join(str(x) for x in y_class)
+#     y = int(y)
+#     res = lab[y]
+#     print(res)
+#     return res
+
+
+# @app.route('/', methods=['GET'])
+# def index():
+#     # Main page
+#     return render_template('index.html')
+    
+# @app.route('/predict', methods=['GET', 'POST'])
+# def upload():
+#     if request.method == 'POST':
+#         # Get the file from post request
+#         f = request.files['file']
+
+#         # Save the file to ./uploads
+#         basepath = os.path.dirname(__file__)
+#         file_path = os.path.join(
+#             basepath, 'uploads', secure_filename(f.filename))
+#         f.save(file_path)
+
+#         # Make prediction
+#         res = processed_img(file_path)
+#         prediction = lab[np.argmax(res)]
+
+#         # Process your result for human
+#         # pred_class = preds.argmax(axis=-1)            # Simple argmax
+#         # pred_class = decode_predictions(res, top=1)   # ImageNet Decode
+#         # result = str(pred_class[0][0][1])               # Convert to string
+#         # os.remove('./uploads/' + f.filename)
+#         return prediction
+#     # return None
+#     return render_template("index.html")
+
+@app.route('/burung')
+def burung():
+    # Main page
+    return render_template('burung.html')
+
+
+@app.route('/graph')
+def graph():
+    # Main page
+    return render_template('graph.html')
+
 if __name__ == '__main__':
     app.run(debug=True, threaded=False)
 
 # env\Scripts\activate.bat
+
+ ###############################################################################
+
